@@ -2,9 +2,9 @@
 
 ::***********************************************************************************************************************************************************************************************************
 :: 1.  'UTF-8' is better than 'UTF8'/'utf8'/etc... for compatibility reasons (Java7 based-products).
-:: 2.  this file compile and test run the application (first by class, lastly by jar). 
+:: 2.  this file compile and test run the application (first by class, lastly by jar).
 :: 3.  various global-arguments and system-property-items are used to make sure that Windows will
-::       pass along the textual-content properly, that Java will handle it properly, and return it to Windows, 
+::       pass along the textual-content properly, that Java will handle it properly, and return it to Windows,
 ::       and Windows will show it.
 :: 4.  see the 'runner' example: 'input2stdout.cmd' calls for 'input2stdout.jar' with some of those switches passing along command-line arguments and preserving the exit-code of the application.
 ::***********************************************************************************************************************************************************************************************************
@@ -37,7 +37,7 @@ set "EXIT_CODE=0"
 
 
 ::compile. explicit encoding with specific command-line switch of 'javac' (can't use system-property items).
-javac -classpath "." -encoding "UTF8" -g:none -Werror  "input2stdout.java" 
+javac -classpath "." -encoding "UTF8" -g:none -Werror  "input2stdout.java"
 set "EXIT_CODE=%ErrorLevel%"
 if ["%EXIT_CODE%"] NEQ ["0"] ( goto ERROR_COMPILATION )
 
@@ -46,7 +46,7 @@ if ["%EXIT_CODE%"] NEQ ["0"] ( goto ERROR_COMPILATION )
 ::-- TEST RUN (compiled class)   --
 ::---------------------------------
 ::run.     uses those system-property items (same as global).
-java  "-Dfile.encoding=UTF-8" "-Duser.language=en"  -classpath "."                                   "input2stdout" 
+java  "-Dfile.encoding=UTF-8" "-Duser.language=en"  -classpath "."  "input2stdout"
 set "EXIT_CODE=%ErrorLevel%"
 if ["%EXIT_CODE%"] NEQ ["0"] ( goto ERROR_RUNTIME_FROMCLASS )
 
@@ -60,7 +60,7 @@ if ["%EXIT_CODE%"] NEQ ["0"] ( goto ERROR_JARPACK )
 ::---------------------------------
 ::-- TEST RUN (stand-along jar)  --
 ::---------------------------------
-java  "-Dfile.encoding=UTF-8" "-Duser.language=en"  -jar "input2stdout.jar" 
+java  "-Dfile.encoding=UTF-8" "-Duser.language=en"  -jar "input2stdout.jar"
 set "EXIT_CODE=%ErrorLevel%"
 if ["%EXIT_CODE%"] NEQ ["0"] ( goto ERROR_RUNTIME_FROMJAR )
 
