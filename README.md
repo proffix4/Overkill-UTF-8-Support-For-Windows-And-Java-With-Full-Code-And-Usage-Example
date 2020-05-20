@@ -1,3 +1,8 @@
+
+<h3>It is VERY IMPORTANT that you'll open up the CMD and JAVA files after you've downloaded/checked-out/forked the repository to your computer, with an editor such as Notepad++ or Notepad2 and make sure that for each file the end-of-line format is Windows-EOL (<code>\r\n</code>) and that each file is encoded as "UTF-8" (in Notepad2. Not "UTF-8 with signature") or "UTF-8 without BOM (in Notepad++). GitHub tends to change those things and it can really mess up the batch files.</h3>
+
+<hr/>
+
 <h1>Overkill UTF-8 Support For Windows And Java With Full Code And Usage Example</h1>
 
 The <code>input2stdout.java</code> accepts an input from an inputbox, 
