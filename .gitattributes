@@ -1,0 +1,7 @@
+*.cmd       text    eol=crlf
+
+*.java      text    eol=crlf
+
+*.txt       text    eol=crlf
+
+README.md           eol=crlf
