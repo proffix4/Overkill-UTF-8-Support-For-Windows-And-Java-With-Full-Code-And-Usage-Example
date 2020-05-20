@@ -4,9 +4,18 @@ import java.io.UnsupportedEncodingException;
 
 public class input2stdout{
   public static void main(String[] args) throws UnsupportedEncodingException{
-    final String s = new String(JOptionPane.showInputDialog("Text:").getBytes(), "UTF-8");
+    String s_input;
+    
+    s_input = JOptionPane.showInputDialog("Text:");                   //get input from user.
+    s_input = (s_input instanceof java.lang.String) ? s_input : "";   //normalize to string (from null?).
+    s_input = s_input.replaceAll("\\[\r\n]+$",     "")                //remove multi-line (Unix, shell, sh, bash  - '\' before end-of-line)
+                     .replaceAll("\u005E[\r\n]+$", "")                //remove multi-line (Windows - rarly used   - '^' before end-of-line) - Unicode representation is used instead of just "\^[\r\n]+$" since Java seems to call it "unescape'able character" for some reason...
+                     .replaceAll("[\r\n]+",        "")                //remove multi-line - normalize to one-line - generic.
+                     ;
+    s_input = new String(s_input.getBytes(), "UTF-8");                //store explicitly as UTF-8 string (mostly used for storing in DB..).
+
     final PrintStream printstream = new PrintStream(System.out, true, "UTF-8");
-    printstream.print(s);
+    printstream.print(s_input);
 
     Thread.yield();
     System.exit(0);
