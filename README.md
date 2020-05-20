@@ -97,3 +97,8 @@ https://gist.github.com/Manouchehri/fd754e402d98430243455713efada710
 https://knowledge.digicert.com/generalinformation/INFO4231.html 
 https://knowledge.digicert.com/alerts/migration-of-legacy-verisign-and-symantec-time-stamping-services.html 
 https://stackoverflow.com/questions/25052925/does-anyone-know-a-freetrial-timestamp-server-service
+
+
+<hr/>
+
+Note: after signing the JAR file, the <code>META-INF/Manifest.txt</code> will be renamed to <code>META-INF/MANIFEST.MF</code> and will include some more information (automatically generated), the entry point information it is still important and will still be there (based on the information found in <code>META-INF/Manifest.txt</code>).
